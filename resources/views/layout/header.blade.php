@@ -88,7 +88,7 @@
                                         </li>
                                         <li>
                                             <!-- Disable the link for the first dropdown item -->
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="/logout">
                                                 Logout
                                             </a>
                                         </li>
