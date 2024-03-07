@@ -8,12 +8,22 @@
 
     <div class="row justify-content-center mt-3 p-3">
         <div class="col-md-6 col-lg-2">
-            <form id="frmSignUp" method="post">
+            <form id="frmSignUp" method="POST" action="{{route('register.post')}}">
+                @if($errors->any())
+                    <div class="p-3 mb-3 rounded-2 bg-danger w-auto">
+                        @foreach($errors->all() as $error)
+                            <div class="text-color-hover-black text-3">
+                                {{$error}}
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                @csrf
                 <div class="row">
                     <div class="form-group col">
                         <label class="form-label text-color-dark text-3">
                             Your Name <span class="text-color-danger">*</span>
-                            <input type="text" name="username" value="" class="form-control form-control-lg text-4"
+                            <input type="text" name="name" value="" class="form-control form-control-lg text-4"
                                    required="">
                         </label>
                     </div>
