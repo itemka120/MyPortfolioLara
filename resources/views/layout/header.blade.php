@@ -70,32 +70,31 @@
                     </div>
                 </div>
                 @auth()
-                <div class="header-column header-column flex-grow-0 justify-content-center">
-                    <div class="header-row ps-4 justify-content-end">
-                        <ul class="header-nav-icons">
-                            <div class="dropdown text-end">
-                                <a href="#" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="dropdown">
-                                    <img src="/public/storage/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                                </a>
-                                <ul class="dropdown-menu text-small">
-                                    <li>
-                                        <div class="dropdown-item">
-
-                                               Welcome, {{auth()->user()->name}}.
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/logout">
-                                            Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </ul>
+                    <div class="header-column header-column flex-grow-0 justify-content-center">
+                        <div class="header-row ps-4 justify-content-end">
+                            <ul class="header-nav-icons">
+                                <div class="dropdown text-end">
+                                    <a href="#" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="dropdown">
+                                        <img src="/public/storage/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                                    </a>
+                                    <ul class="dropdown-menu text-small">
+                                        <li>
+                                            <div class="dropdown-item disabled text-color-black">
+                                                Welcome, {{auth()->user()->name}}.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <!-- Disable the link for the first dropdown item -->
+                                            <a class="dropdown-item" href="#">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </ul>
                         @endauth
                     </div>
                 </div>
