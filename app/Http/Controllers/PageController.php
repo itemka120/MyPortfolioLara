@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller,
-    Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -22,9 +21,11 @@ class PageController extends Controller
 
     public function about()
     {
+        $info = DB::table('abouts')->get();
+
         // Prepare data for rendering
         $data = [
-            'title' => 'About me',
+            'info' => $info,
         ];
 
         // Create a new View object with the title and content, then render it

@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('title')
-    {{ $title }}
+    About me
 @endsection
 
 @section('content')
@@ -10,7 +10,9 @@
         <div class="row pb-4 mb-2">
             <div class="col-md-6 mb-4 mb-md-0 appear-animation animated fadeInLeftShorter appear-animation-visible">
                 <div class="card">
-                    <img src="/public/storage/img/img.png" class="card-img-top" alt="...">
+                    <img src="@foreach($info as $elem)
+                            {!! $elem->img !!}
+                        @endforeach" class="card-img-top" alt="...">
                 </div>
             </div>
             <div class="col-md-6">
@@ -23,10 +25,26 @@
                     <h2 class="text-color-dark font-weight-normal text-4 mb-0 appear-animation animated maskUp appear-animation-visible" data-appear-animation="maskUp" data-appear-animation-delay="1000" style="animation-delay: 1000ms;">Personal <strong class="font-weight-extra-bold">Information</strong></h2>
                 </div>
                 <ul class="list list-icons list-primary list-borders text-3 appear-animation animated fadeInUpShorter appear-animation-visible" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200" style="animation-delay: 1200ms;">
-                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Name: </strong>Ivanov Artem</li>
-                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Birthday: </strong>16 july</li>
-                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Nationality: </strong>Ukrainian</li>
-                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Level: </strong>Beginner</li>
+                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Name: </strong>
+                        @foreach($info as $elem)
+                            {!! $elem->name !!}
+                        @endforeach
+                    </li>
+                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Birthday: </strong>
+                        @foreach($info as $elem)
+                            {!! $elem->birthday !!}
+                        @endforeach
+                    </li>
+                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Nationality: </strong>
+                        @foreach($info as $elem)
+                            {!! $elem->nation !!}
+                        @endforeach
+                    </li>
+                    <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Level: </strong>
+                        @foreach($info as $elem)
+                            {!! $elem->level !!}
+                        @endforeach
+                    </li>
                 </ul>
             </div>
         </div>

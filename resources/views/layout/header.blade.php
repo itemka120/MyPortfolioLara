@@ -42,6 +42,7 @@
                                                     <i class="fas fa-chevron-down"></i><i
                                                         class="fas fa-chevron-down"></i></a>
                                             </li>
+
                                             <li class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" href="/about">
                                                     About

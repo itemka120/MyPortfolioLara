@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('title')
-    {{ $title }}
+    Login
 @endsection
 
 @section('content')

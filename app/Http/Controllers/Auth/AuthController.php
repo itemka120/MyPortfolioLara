@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Auth\User;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -20,6 +21,28 @@ class AuthController extends Controller
 
         // Create a new View object with the title and content, then render it
         return view('register', $data);
+    }
+
+    public function registerPost(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ];
+
+        $user = User::create($data);
+        if ($user) {
+            return redirect()->intended(route('login'));
+        }
+
+        return redirect(route('register'))->with('error', 'Registration failed. Please try again.');
     }
 
     public function login()
@@ -50,26 +73,18 @@ class AuthController extends Controller
 
     }
 
-    public function registerPost(Request $request)
+    public function dashboard()
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
-        ]);
+        $users = DB::table('users')
+            ->get();
 
+        // Prepare data for rendering
         $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'users' => $users,
         ];
 
-        $user = User::create($data);
-        if ($user) {
-            return redirect()->intended(route('login'));
-        }
-
-        return redirect(route('register'))->with('error', 'Registration failed. Please try again.');
+        // Create a new View object with the title and content, then render it
+        return view('admin/dashboard', $data);
     }
 
     public function logout() {
