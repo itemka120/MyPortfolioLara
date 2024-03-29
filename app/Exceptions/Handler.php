@@ -3,17 +3,24 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable; // Importing Throwable from global namespace
 
 class Handler extends ExceptionHandler
 {
-    function render($request, Throwable $e)
+    public function render($request, Throwable $e)
     {
-        if ($this->isHttpException($e)) {
-            if ($e->getStatusCode() == 404) {
+        try {
+            return parent::render($request, $e);
+        } catch (HttpException $exception) {
+            $statusCode = $exception->getStatusCode();
+            if ($statusCode == 404) {
                 return response()->view('errors.404', [], 404);
+            } elseif ($statusCode == 403) {
+                return response()->view('errors.403', [], 403);
+            } else {
+                return response()->view('errors.unknown');
             }
         }
-        return parent::render($request, $e);
     }
 }

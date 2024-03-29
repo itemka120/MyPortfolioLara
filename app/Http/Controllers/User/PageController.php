@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
@@ -11,11 +12,11 @@ class PageController extends Controller
     {
         // Prepare data for rendering
         $data = [
-            'title' => 'Welcome!',
+
         ];
 
         // Create a new View object with the title and content, then render it
-        return view('home', $data);
+        return view('user.home', $data);
 
     }
 
@@ -29,6 +30,16 @@ class PageController extends Controller
         ];
 
         // Create a new View object with the title and content, then render it
-        return view('about', $data);
+        return view('user.about', $data);
+    }
+
+    public function register()
+    {
+        return view('user.register');
+    }
+
+    public function login()
+    {
+        return view('user.login');
     }
 }

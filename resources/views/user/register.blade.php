@@ -1,11 +1,10 @@
-@extends('layout.template')
+@extends('user.layout.template')
 
 @section('title')
     Register
 @endsection
 
 @section('content')
-
     <div class="row justify-content-center mt-3 p-3">
         <div class="col-md-6 col-lg-2">
             <form id="frmSignUp" method="POST" action="{{route('register.post')}}">

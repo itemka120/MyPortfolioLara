@@ -1,4 +1,4 @@
-@extends('layout.template')
+@extends('user.layout.template')
 
 @section('title')
     Welcome !

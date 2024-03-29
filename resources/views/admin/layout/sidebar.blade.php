@@ -5,13 +5,20 @@
             <span class="bi pe-none me-2 fs-4">Sidebar</span>
         </a>
         <hr>
+
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                    Users
-                </a>
-            </li>
-            <!-- Add more sidebar items here -->
+            @foreach(Route::getRoutes() as $route)
+                @php
+                    $name = $route->getName();
+                @endphp
+                @if(Str::startsWith($name, 'dashboard.'))
+                    <li class="nav-item mb-1">
+                        <a href="{{ route($name) }}" class="nav-link">
+                            {{ $name }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
         </ul>
         <hr>
         <div class="dropdown">

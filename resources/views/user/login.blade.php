@@ -1,26 +1,26 @@
-@extends('layout.template')
+@extends('user.layout.template')
 
 @section('title')
     Login
 @endsection
 
 @section('content')
-
     <div class="row justify-content-center mt-5 p-4">
         <div class="col-md-6 col-lg-2">
-            <form id="frmSignIn" method="POST" action="{{route('login.post')}}" class="needs-validation" novalidate="novalidate">
-                    @if(session('error'))
+            <form id="frmSignIn" method="POST" action="{{route('login.post')}}" class="needs-validation"
+                  novalidate="novalidate">
+                @if(session('error'))
                     <div class="p-3 mb-3 rounded-2 alert-danger w-auto">
                         <div class="text-color-hover-black text-3">
                             {{ session('error') }}
                             @if($errors->any())
                                 @foreach($errors->all() as $error)
-                                        {{$error}}
+                                    {{$error}}
                                 @endforeach
                             @endif
                         </div>
                     </div>
-                    @endif
+                @endif
                 @csrf
                 <div class="row">
                     <div class="form-group col">

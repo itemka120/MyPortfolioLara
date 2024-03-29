@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\User\PageController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -11,15 +12,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 // PageMethods
-Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::group(['middleware' => 'web'], function () {
+    // PageMethods for Users
+    Route::get('/', [PageController::class, 'home'])->name('home');
+    Route::get('/about', [PageController::class, 'about'])->name('about');
+    Route::get('/login', [PageController::class, 'login'])->name('login');
+    Route::get('/register', [PageController::class, 'register'])->name('register');
 
-// AuthMethods
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    // AuthMethods
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
-//test
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+// Admin Routes
+Route::group(['middleware' => ['web', 'auth', 'isAdmin']], function () {
+    // PageMethods for Admins
+    Route::get('/dashboard/user', [AdminPageController::class, 'dashboardUsers'])->name('dashboard.users');
+    Route::get('/dashboard/about', [AdminPageController::class, 'dashboardAbout'])->name('dashboard.about');
+});
