@@ -28,6 +28,5 @@ Route::group(['middleware' => 'web'], function () {
 // Admin Routes
 Route::group(['middleware' => ['web', 'auth', 'isAdmin']], function () {
     // PageMethods for Admins
-    Route::get('/dashboard/user', [AdminPageController::class, 'dashboardUsers'])->name('dashboard.users');
-    Route::get('/dashboard/about', [AdminPageController::class, 'dashboardAbout'])->name('dashboard.about');
+    Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
 });
