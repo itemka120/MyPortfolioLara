@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Auth\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         // If the email already exists, redirect with an error message
         if ($existingEmail) {
-            return redirect()->route('register')->withErrors(['error' => 'This email is already used. Please try again.']);
+            return redirect()->route('home')->withErrors(['error' => 'This email is already used. Please try again.']);
         }
 
         // Create a new user if the email doesn't exist
@@ -31,10 +31,10 @@ class AuthController extends Controller
         // If user creation is successful, redirect to the home page
         if ($user) {
             return redirect()->intended(route('home'));
+        } else {
+            // If user creation fails, redirect with an error message
+            return redirect(route('home'))->withErrors(['error' => 'Registration failed. Please try again.']);
         }
-
-        // If user creation fails, redirect with an error message
-        return redirect(route('register'))->withErrors(['error' => 'Registration failed. Please try again.']);
     }
 
     public function loginPost(Request $request)
@@ -44,17 +44,19 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             //Checking for admin
             if (Auth::check() && Auth::user()->isAdmin()) {
-                return redirect()->intended(route('dashboard.users'));
+                return redirect()->intended(route('dashboard'));
             }
             return redirect()->intended(route('home'));
+        } else {
+            return redirect(route('home'))->withErrors(['error' => 'Invalid email or password.']);
+
         }
 
-        return redirect(route('login'))->withErrors(['error' => 'Invalid email or password.']);
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect(route('home'))->with('success', 'You\'ve successfully logout');
+        return redirect(route('home'))->with('logout', 'You\'ve successfully logout');
     }
 }
