@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-<html
-    class="history svg video supports boxshadow csstransforms3d csstransitions backgroundcliptext webkit chrome win js sticky-header-enabled"
-    lang="en">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@yield('title')</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/public/storage/img/cv-et-cv.png" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
 
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-
-    <!-- Web Fonts  -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <style>
+        body{
+            min-height: 100vh;
+        }
+    </style>
 
     <!--Css/Js compiled files-->
     @vite(['resources/js/app.js'])
 
 </head>
+<body class="">
 
-<body>
+@include('admin.layout.sidebar')
 
-    @include('admin.layout.sidebar')
-
-    @yield('content')
+@yield('content')
 
 </body>
-
 </html>

@@ -13,6 +13,12 @@ class AuthController extends Controller
 
     public function registerPost(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
         // Check if the email already exists in the users table
         $existingEmail = DB::table('users')->where('email', $request->email)->exists();
 
@@ -20,6 +26,8 @@ class AuthController extends Controller
         if ($existingEmail) {
             return redirect()->route('home')->withErrors(['error' => 'This email is already used. Please try again.']);
         }
+
+
 
         // Create a new user if the email doesn't exist
         $user = User::create([
@@ -39,6 +47,12 @@ class AuthController extends Controller
 
     public function loginPost(Request $request)
     {
+
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

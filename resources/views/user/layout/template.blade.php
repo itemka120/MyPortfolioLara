@@ -1,77 +1,33 @@
 <!DOCTYPE html>
-<html class="h-100"
-    lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" href="/public/storage/img/cv-et-cv.png" type="image/x-icon">
-
-    <style>
-        .font {
-            font-family: cursive;
-        }
-
-        /*
- * Globals
- */
-
-
-        /*
-         * Base structure
-         */
-
-        body {
-            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-            box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-        }
-
-        .cover-container {
-            max-width: 50em;
-        }
-
-
-        /*
-         * Header
-         */
-
-        .nav-masthead .nav-link {
-            color: rgba(255, 255, 255, .5);
-            border-bottom: .25rem solid transparent;
-        }
-
-        .nav-masthead .nav-link:hover,
-        .nav-masthead .nav-link:focus {
-            border-bottom-color: rgba(255, 255, 255, .25);
-            color: #0dcaf0;
-        }
-
-        .nav-masthead .nav-link + .nav-link {
-            margin-left: 1rem;
-        }
-
-        .nav-masthead .active {
-            color: #fff;
-            border-bottom-color: #fff;
-        }
-    </style>
+    <link rel="shortcut icon" href="/public/storage/img/curriculum-vitae.png" type="image/x-icon">
 
     <!--Css/Js compiled files-->
-    @vite(['resources/js/app.js'])
+    @vite('resources/js/app.js')
 
 </head>
+<body>
 
-    <body class="d-flex font text-center h-100 text-bg-dark">
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    @include('user.layout.header')
 
-            @include('user.layout.header')
+    <main class="flex">
 
-            @yield('content')
+        @include('user.layout.navbar')
 
-            @include('user.layout.footer')
+        @yield('content')
 
-        </div>
-    </body>
+    </main>
 
+
+    @include('user.layout.footer')
+
+</body>
 </html>

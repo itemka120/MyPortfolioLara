@@ -30,10 +30,10 @@ Route::group(['middleware' => 'web', 'auth'], function () {
 Route::group(['middleware' => ['web', 'auth', 'isAdmin']], function () {
     // PageMethods for Admins
     Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
-});
+    //tasks
+    Route::get('/dashboard/tasks', [TaskController::class, 'index']);
+    Route::post('/dashboard/tasks', [TaskController::class, 'store']);
+    Route::put('/task/edit/{task}', [TaskController::class, 'update']);
+    Route::delete('/task/delete/{task}', [TaskController::class, 'destroy']);
 
-//tasks
-Route::get('/tasks', [TaskController::class, 'index']);
-Route::post('/tasks', [TaskController::class, 'store']);
-Route::put('/task/edit/{task}', [TaskController::class, 'update']);
-Route::delete('/task/delete/{task}', [TaskController::class, 'destroy']);
+});

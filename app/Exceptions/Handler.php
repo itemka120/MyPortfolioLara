@@ -16,8 +16,6 @@ class Handler extends ExceptionHandler
             $statusCode = $exception->getStatusCode();
             if ($statusCode == 404) {
                 return response()->view('errors.404', [], 404);
-            } elseif ($statusCode == 403) {
-                return response()->view('errors.403', [], 403);
             } else {
                 return response()->view('errors.unknown');
             }

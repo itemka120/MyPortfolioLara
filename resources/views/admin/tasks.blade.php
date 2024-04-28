@@ -10,7 +10,7 @@
 
 <ul>
 
-@foreach($tasks as $task)
+    @foreach($tasks as $task)
         <li>
             {{ $task->name }}
             <br/>
@@ -18,7 +18,7 @@
             <br/>
             <ul class="list-group" style="padding: 0">
                 <li style="list-style-type: none;">edit
-                    <ul class="list-group-item" style="display: none;" onclick="event.stopPropagation();">
+                    <ul class="list-group-item" style="display: none;">
                         <li style="list-style-type: none;">
                             <form action="/task/edit/{{ $task->id }}" method="POST">
                                 @method('PUT')
@@ -41,18 +41,6 @@
             </form>
         </li>
 
-@endforeach
+    @endforeach
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const listItems = document.querySelectorAll('.list-group');
-
-            listItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const sublist = this.querySelector('.list-group-item');
-                    sublist.style.display = sublist.style.display === 'none' ? 'block' : 'none';
-                });
-            });
-        })</script>
 </ul>
