@@ -8,7 +8,7 @@
 
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" href="/public/storage/img/curriculum-vitae.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('/public/storage/img/curriculum-vitae.png')}}" type="image/x-icon">
 
     <!--Css/Js compiled files-->
     @vite('resources/js/app.js')

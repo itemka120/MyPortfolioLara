@@ -17,14 +17,6 @@
                 </a>
                 <span x-show="tooltips['Projects']" x-cloak class="tooltip tooltip-right absolute ml-3 pt-2.5 shadow-sm">Projects</span>
             </li>
-            <li class="py-1">
-                <a href="/about" class="btn btn-ghost btn-circle" @mouseover="tooltips['About'] = true" @mouseleave="tooltips['About'] = false">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M12 2c-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4s-1.79-4-4-4zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4zm0 10c-2.21 0-4-1.79-4"/>
-                    </svg>
-                </a>
-                <span x-show="tooltips['About']" x-cloak class="tooltip tooltip-right absolute ml-3 pt-2.5 shadow-sm">About</span>
-            </li>
             <li class="border-t-2 border-gray-400 py-1">
                 <div class="btn btn-ghost btn-circle">
                     <label for="theme-switch" class="swap swap-rotate">

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'web'], function () {
     // PageMethods for Users
     Route::get('/', [PageController::class, 'home'])->name('home');
-    Route::get('/about', [PageController::class, 'about'])->name('about');
+    Route::get('/projects', [PageController::class, 'projects'])->name('projects');
     // AuthMethods
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
@@ -35,5 +35,4 @@ Route::group(['middleware' => ['web', 'auth', 'isAdmin']], function () {
     Route::post('/dashboard/tasks', [TaskController::class, 'store']);
     Route::put('/task/edit/{task}', [TaskController::class, 'update']);
     Route::delete('/task/delete/{task}', [TaskController::class, 'destroy']);
-
 });

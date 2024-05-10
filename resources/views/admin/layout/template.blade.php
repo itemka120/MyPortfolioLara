@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,19 +8,13 @@
 
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" href="" type="image/x-icon">
-
-    <style>
-        body{
-            min-height: 100vh;
-        }
-    </style>
+    <link rel="shortcut icon" href="{{asset('/public/storage/img/curriculum-vitae.png')}}" type="image/x-icon">
 
     <!--Css/Js compiled files-->
-    @vite(['resources/js/app.js'])
+    @vite('resources/js/app.js')
 
 </head>
-<body class="">
+<body>
 
 @include('admin.layout.sidebar')
 

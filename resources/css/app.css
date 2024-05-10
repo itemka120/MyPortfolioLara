@@ -7,3 +7,19 @@ body
     font-family: cursive;
     margin: 0!important;
 }
+
+.carousel-inner {
+    transition: transform 1s ease;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.carousel-caption {
+    width: 100%;
+}
