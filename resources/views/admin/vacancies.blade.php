@@ -1,7 +1,7 @@
 @extends('admin.layout.template')
 
 @section('title')
-    Dashboard
+Vacancies
 @endsection
 
 @section('content')

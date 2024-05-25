@@ -7,7 +7,7 @@
                         <path fill="currentColor" d="M12 2L1 11h3v11h16V11h3z"/>
                     </svg>
                 </a>
-                <span x-show="tooltips['Home']" x-cloak class="tooltip tooltip-right absolute ml-3 pt-2.5 shadow-sm">Home</span>
+                <span x-transition x-show="tooltips['Home']" x-cloak class="tooltip tooltip-right absolute ml-3 pt-2.5 shadow-sm">Home</span>
             </li>
             <li class="py-1">
                 <a href="/projects" class="btn btn-ghost btn-circle" @mouseover="tooltips['Projects'] = true" @mouseleave="tooltips['Projects'] = false">
@@ -15,7 +15,7 @@
                         <path fill="currentColor" d="M21.3 11.71l-9-9c-.39-.39-1.02-.39-1.41 0l-9 9c-.39.39-.39 1.02 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9c.38-.39.38-1.02-.01-1.41zm-2.59-.71l-6-6L4 11.41 5.41 13l2.3-2.29 4.3 4.29 6-6L18.71 11z"/>
                     </svg>
                 </a>
-                <span x-show="tooltips['Projects']" x-cloak class="tooltip tooltip-right absolute ml-3 pt-2.5 shadow-sm">Projects</span>
+                <span x-transition x-show="tooltips['Projects']" x-cloak class="tooltip tooltip-right absolute ml-3 pt-2.5 shadow-sm">Projects</span>
             </li>
             <li class="border-t-2 border-gray-400 py-1">
                 <div class="btn btn-ghost btn-circle">

@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminPageController;
+use App\Http\Controllers\Admin\Features\UserController;
+use App\Http\Controllers\Admin\Features\VacanciesController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\TaskController;
 use App\Http\Controllers\User\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,16 +24,18 @@ Route::group(['middleware' => 'web'], function () {
 });
 //Securing Logout AuthMethod
 Route::group(['middleware' => 'web', 'auth'], function () {
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthController::class, 'logout']);
 });
 
 // Admin Routes
 Route::group(['middleware' => ['web', 'auth', 'isAdmin']], function () {
     // PageMethods for Admins
-    Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
-    //tasks
-    Route::get('/dashboard/tasks', [TaskController::class, 'index']);
-    Route::post('/dashboard/tasks', [TaskController::class, 'store']);
-    Route::put('/task/edit/{task}', [TaskController::class, 'update']);
-    Route::delete('/task/delete/{task}', [TaskController::class, 'destroy']);
+    Route::get('/dashboard/users', [AdminPageController::class, 'users'])->name('dashboard.users');
+    Route::post('/dashboard/users/create', [UserController::class, 'create'])->name('create.user');
+    Route::put('/dashboard/users/edit/{user}', [UserController::class, 'update'])->name('edit.user');
+    Route::delete('/dashboard/users/delete/{user}', [UserController::class, 'delete'])->name('delete.user');
+
+    Route::get('/dashboard/vacancies', [AdminPageController::class, 'vacancies'])->name('dashboard.vacancies');
+    Route::post('/dashboard/create/vacancy', [VacanciesController::class, 'edit'])->name('edit.vacancy');
+    Route::delete('/dashboard/users/delete/{vacancy}', [VacanciesController::class, 'delete'])->name('delete.vacancy');
 });

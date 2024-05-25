@@ -18,7 +18,7 @@
                         <img src="{{asset('/public/storage/img/alpine.png')}}" class="w-full object-cover" alt=""/>
                     </div>
                     <div class="carousel-item w-full">
-                        <img src="{{asset('/public/storage/img/flaticon.png')}}" class="w-full object-fill" alt=""/>
+                        <img src="{{asset('/public/storage/img/flaticon.png')}}" class="w-full object-cover" alt=""/>
                     </div>
                 </div>
                 <!-- Navigation buttons -->

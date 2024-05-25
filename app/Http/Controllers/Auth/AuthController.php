@@ -58,7 +58,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             //Checking for admin
             if (Auth::check() && Auth::user()->isAdmin()) {
-                return redirect()->intended(route('dashboard'));
+                return redirect()->intended(route('dashboard.users'));
             }
             return redirect()->intended(route('home'));
         } else {
