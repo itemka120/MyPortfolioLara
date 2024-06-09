@@ -49,7 +49,7 @@
                         <div class="lg:w-2/6 md:w-1/2 bg-base-300 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0 shadow-b shadow-md">
                             <div class="mb-5 flex flex-row items-center">
                                 <div class="text-lg flex-1">Login</div>
-                                <a class="btn btn-sm btn-circle btn-ghost" onclick="document.getElementById('login_modal').close()">✕</a>
+                                <button class="btn btn-sm btn-circle btn-ghost" onclick="document.getElementById('login_modal').close()">✕</button>
                             </div>
                             <form method="POST" action="{{route('login')}}">
                                 @csrf
@@ -61,7 +61,7 @@
                                     <label for="password" class="leading-7 text-sm">Your Password</label>
                                     <input type="password" id="password" name="password" class="w-full rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" maxlength="12" placeholder="Password" required>
                                 </div>
-                                <button class="btn btn-primary w-full" type="submit">Sign Up</button>
+                                <button class="btn btn-primary w-full" type="submit">Login</button>
                             </form>
                         </div>
                     </div>

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\Features\UserController;
-use App\Http\Controllers\Admin\Features\VacanciesController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\PageController;
 use Illuminate\Support\Facades\Route;
@@ -34,8 +33,4 @@ Route::group(['middleware' => ['web', 'auth', 'isAdmin']], function () {
     Route::post('/dashboard/users/create', [UserController::class, 'create'])->name('create.user');
     Route::put('/dashboard/users/edit/{user}', [UserController::class, 'update'])->name('edit.user');
     Route::delete('/dashboard/users/delete/{user}', [UserController::class, 'delete'])->name('delete.user');
-
-    Route::get('/dashboard/vacancies', [AdminPageController::class, 'vacancies'])->name('dashboard.vacancies');
-    Route::post('/dashboard/create/vacancy', [VacanciesController::class, 'edit'])->name('edit.vacancy');
-    Route::delete('/dashboard/users/delete/{vacancy}', [VacanciesController::class, 'delete'])->name('delete.vacancy');
 });

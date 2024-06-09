@@ -14,10 +14,8 @@
         <section class="mx-2 p-3 pt-0 border-b-2 border-gray-700">
             <div x-data="{ isOpen: open }" class="bg-slate-700 p-2 rounded-lg shadow-lg text-left">
                 <button @click="isOpen = !isOpen" class="w-full">Users</button>
-                <div x-show="isOpen" class="my-2 bg-slate-600 p-2 rounded flex flex-col gap-2">
+                <div x-transition x-show="isOpen" class="my-2 bg-slate-600 p-2 rounded flex flex-col gap-2">
                     <a href="/dashboard/users" class="text-left hover:text-indigo-600">All the users</a>
-                    <hr class="border-gray-700"/>
-                    <a href="/dashboard/vacancies" class="text-left hover:text-indigo-600">Vacancies</a>
                 </div>
             </div>
         </section>

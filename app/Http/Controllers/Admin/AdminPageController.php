@@ -13,8 +13,4 @@ class AdminPageController
 
         return view('admin.users', compact('users'));
     }
-
-    public function vacancies() {
-        return view('admin.vacancies');
-    }
 }
